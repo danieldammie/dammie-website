@@ -1,0 +1,17 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "42N3Q8BQJJ.com.dammie.app"
+        ],
+        "components": [
+          {
+            "/": "/event/*",
+            "comment": "Matches any event URL like /event/wine-night-at-glou-glou"
+          }
+        ]
+      }
+    ]
+  }
+} 
