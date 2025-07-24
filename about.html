@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about - dammie</title>
+    <meta name="description" content="learn about dammie's mission to help amsterdammers discover their city's underground heartbeat">
+    
+    <style>
+        :root {
+            --dammie-olive: #8B7355;
+            --dammie-olive-dark: #6B5B47;
+            --dammie-olive-darker: #4A3D32;
+            --dammie-cream: #F9F7F1;
+            --dammie-cream-dark: #F5F2E8;
+            --text-dark: #2A2A2A;
+            --text-light: #666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--dammie-cream);
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(249, 247, 241, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(139, 115, 85, 0.1);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dammie-olive);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--dammie-olive);
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .hero-section h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: var(--dammie-olive);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-section .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .content-section h2 {
+            font-size: 2rem;
+            color: var(--dammie-olive);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .highlight-box {
+            background: var(--dammie-olive-darker);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h3 {
+            color: var(--dammie-cream);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .highlight-box p {
+            color: rgba(249, 247, 241, 0.9);
+        }
+
+        .vibe-mantras {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            border-left: 4px solid var(--dammie-olive);
+        }
+
+        .vibe-mantras h3 {
+            color: var(--dammie-olive);
+            margin-bottom: 1rem;
+        }
+
+        .vibe-mantras ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .vibe-mantras li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .vibe-mantras li:before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+        }
+
+        .contact-section {
+            background: var(--dammie-cream-dark);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .contact-section h3 {
+            color: var(--dammie-olive);
+            margin-bottom: 1rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: var(--dammie-olive);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            opacity: 0.7;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .main {
+                padding: 6rem 1rem 2rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="/" class="logo">dammie</a>
+            <ul class="nav-links">
+                <li><a href="/">home</a></li>
+                <li><a href="/about" class="active">about</a></li>
+                <li><a href="/privacy">privacy</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <section class="hero-section">
+            <h1>dear amsterdammers,</h1>
+            <p class="subtitle">this is our story</p>
+        </section>
+
+        <section class="content-section">
+            <p>the canals are whispering ancient secrets, the cobblestones are humming with untold stories, and somewhere in a forgotten brown café, a stranger is about to become your new favorite person. the city is poised to explode with hidden magik – temporary aquariums of dreamers, dancers, and dawn-chasers who know that amsterdam's real soul ain't in no fucking guidebook.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>what is this dammie business?</h2>
+            <p>dammie is your co-conspirator in the beautiful mess of discovering amsterdam's underground heartbeat. we're talking about those wine bars tucked behind hidden doors, electronic sets in warehouses that technically don't exist, and art galleries where the real art happens after midnight when the tourists have crawled back to their airbnbs.</p>
+            
+            <p>this ain't another tourist trap masquerading as "local insights." this is for the bike-riding, canal-walking, stroopwafel-dismissing souls who understand that amsterdam's goddam extraordinary moments happen in the spaces between the instagram posts.</p>
+        </section>
+
+        <div class="highlight-box">
+            <h3>for the initiated only</h3>
+            <p>we verify every human with a proper dutch phone number and amsterdam postcode because authentic experiences deserve an authentic crew. no weekend warriors. no "dutch for a semester" exchange students. no "i stayed in the jordaan once" energy.</p>
+            <p>if you can't pronounce "gezelligheid" without sounding like you're choking on a stroopwafel, this probably ain't your vibe.</p>
+        </div>
+
+        <section class="content-section">
+            <h2>how this magik works</h2>
+            <p><strong>discover</strong> – events that match your personal pulse, whether you're drawn to underground techno temples or intimate poetry circles where people actually listen</p>
+            
+            <p><strong>navigate</strong> – with proper cycling distances because walking is for tourists and cars are for people who've given up on life</p>
+            
+            <p><strong>save</strong> – events flow directly into your calendar like they were always meant to be there</p>
+            
+            <p><strong>connect</strong> – with experiences that recognize you're not just another body in the crowd but a complex human with specific tastes in beautiful chaos</p>
+        </section>
+
+        <section class="content-section">
+            <h2>currently in beta mysticism</h2>
+            <p>we're in exclusive beta access because good things take time and rushing ruins vibes. every amsterdammer in our community helps us refine this collaborative experiment in urban discovery.</p>
+            
+            <p>every feature, every recommendation, every mystical algorithm tweak is designed with one sacred mission: helping you fall deeper in love with the city you already call home.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>our vision (or whatever)</h2>
+            <p>amsterdam has always been a city of discovery – from those golden age explorers who probably would've loved a good warehouse rave to today's creative pioneers turning abandoned buildings into temporary utopias. dammie continues that tradition, but instead of conquering new worlds, we're helping you uncover new dimensions of the world you already inhabit.</p>
+            
+            <p>the best experiences aren't advertised on billboards or trending on tiktok. they're whispered between friends over late-night bike rides, shared in quiet moments when the city reveals its secrets, and found by those who know that the real amsterdam doesn't open until after the last tourist bus leaves.</p>
+        </section>
+
+        <div class="highlight-box">
+            <h3>built by amsterdammers, for amsterdammers</h3>
+            <p>every line of code, every design decision, every curated moment reflects our collective obsession with this beautiful, chaotic, endlessly surprising city and the humans who make it extraordinary.</p>
+        </div>
+
+        <div class="vibe-mantras">
+            <h3>vibe mantras</h3>
+            <ul>
+                <li>'be in the experience, pocket those tourist instincts'</li>
+                <li>'support local magik, not corporate algorithms'</li>
+                <li>'share discoveries responsibly – some secrets are meant to stay secret'</li>
+            </ul>
+        </div>
+
+        <div class="contact-section">
+            <h3>reach out</h3>
+            <div class="contact-links">
+                <a href="mailto:hello@dammie.app">hello@dammie.app</a>
+                <a href="https://instagram.com/dammie_app">@dammie_app</a>
+            </div>
+            <p style="margin-top: 1rem; color: var(--text-light); font-size: 0.9rem;">
+                beta access: currently by invitation and good vibes only
+            </p>
+        </div>
+
+        <section class="content-section" style="text-align: center; margin-top: 3rem;">
+            <p style="font-style: italic; color: var(--text-light);">remember kids,<br>
+            stay curious,<br>
+            explore your city,<br>
+            don't be a tourist in your own backyard.</p>
+            
+            <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--text-light);">
+                dammie launched in 2025 with a simple belief: amsterdam's most beautiful moments are worth discovering together, one authentic experience at a time.
+            </p>
+            
+            <p style="margin-top: 1rem; font-weight: 600; color: var(--dammie-olive);">
+                dammie.<br>
+                your amsterdam, discovered.
+            </p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="/">home</a>
+            <a href="/about">about</a>
+            <a href="/privacy">privacy policy</a>
+            <a href="mailto:hello@dammie.app">hello@dammie.app</a>
+            <a href="https://instagram.com/dammie_app">@dammie_app</a>
+        </div>
+        <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.9rem;">
+            built by amsterdammers, for amsterdammers • launched 2025
+        </p>
+    </footer>
+</body>
+</html> 
