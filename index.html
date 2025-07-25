@@ -37,6 +37,32 @@
             color: var(--text-dark);
             background: var(--dammie-cream);
             overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Video */
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            opacity: 0.3;
+        }
+
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(249, 247, 241, 0.7) 0%, 
+                rgba(249, 247, 241, 0.6) 50%, 
+                rgba(91, 107, 59, 0.05) 100%);
+            z-index: -1;
         }
 
         /* Header */
@@ -79,50 +105,56 @@
             color: var(--dammie-olive);
         }
 
-        /* Hero Section */
-        .hero {
+        /* Main Chaos Container */
+        .chaos-container {
+            position: relative;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             padding: 8rem 2rem 4rem;
-            background: linear-gradient(135deg, var(--dammie-cream) 0%, var(--dammie-cream-dark) 100%);
+            overflow: hidden;
         }
 
-        .hero-content {
-            max-width: 1200px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+        /* Central Content */
+        .central-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 100;
+            max-width: 600px;
+            padding: 3rem;
+            background: rgba(249, 247, 241, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            box-shadow: 0 25px 80px rgba(91, 107, 59, 0.2);
         }
 
-        .hero-text h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+        .central-content h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
             font-weight: 700;
             color: var(--dammie-olive);
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
+            margin-bottom: 1rem;
+            line-height: 1;
         }
 
-        .hero-text .tagline {
-            font-size: 1.25rem;
+        .central-content .tagline {
+            font-size: 1.5rem;
             color: var(--text-light);
             margin-bottom: 2rem;
-            line-height: 1.4;
+            line-height: 1.3;
         }
 
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
+        .central-content .description {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 3rem;
+            line-height: 1.6;
         }
 
         .app-store-button {
             display: inline-block;
             transition: all 0.3s ease;
+            margin-bottom: 2rem;
         }
 
         .app-store-button:hover {
@@ -135,280 +167,267 @@
             width: auto;
         }
 
-        .btn-primary {
-            background: var(--dammie-olive);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .btn-primary:hover {
-            background: var(--dammie-olive-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(91, 107, 59, 0.3);
-        }
-
-        /* Story Sections */
-        .story-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 4rem 2rem;
-            position: relative;
-        }
-
-        .story-section:nth-child(even) {
-            background: white;
-        }
-
-        .story-section:nth-child(odd) {
-            background: var(--dammie-cream);
-        }
-
-        .story-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .story-content.reverse {
-            grid-template-columns: 1fr 1fr;
-        }
-
-        .story-content.reverse .story-text {
-            order: 2;
-        }
-
-        .story-content.reverse .phone-showcase {
-            order: 1;
-        }
-
-        .story-text h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            color: var(--dammie-olive);
-            margin-bottom: 2rem;
-            font-weight: 700;
-            line-height: 1.1;
-        }
-
-        .story-text p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            color: var(--text-dark);
-        }
-
-        .story-text .highlight {
-            background: var(--dammie-olive-darker);
-            color: white;
-            padding: 2rem;
-            border-radius: 16px;
-            margin: 2rem 0;
-        }
-
-        .story-text .highlight p {
-            color: rgba(249, 247, 241, 0.9);
-            margin-bottom: 0;
-        }
-
-        /* Phone Showcase */
-        .phone-showcase {
-            position: relative;
-            perspective: 1000px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .phone-mockup {
-            width: 280px;
-            height: 580px;
-            background: #1C1C1E;
-            border-radius: 40px;
-            padding: 6px;
-            position: relative;
-            transform: rotateY(-10deg) rotateX(5deg);
-            transition: transform 0.6s ease;
-            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
-        }
-
-        .phone-mockup::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 110px;
-            height: 32px;
-            background: #000;
-            border-radius: 16px;
-            z-index: 10;
-        }
-
-        .phone-mockup:hover {
-            transform: rotateY(0deg) rotateX(0deg);
-        }
-
-        .phone-screen {
-            width: 100%;
-            height: 100%;
-            background: var(--dammie-cream);
-            border-radius: 34px;
-            overflow: hidden;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .screen-header {
-            position: absolute;
-            top: 3.5rem;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .screen-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--dammie-olive);
-        }
-
-        .screen-visual {
-            width: 200px;
-            height: 300px;
-            background: var(--dammie-olive);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-            margin: 2rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .screen-visual::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
-        }
-
-        .screen-description {
+        .android-message {
             font-size: 0.9rem;
             color: var(--text-light);
-            line-height: 1.5;
+            font-style: italic;
         }
 
-        /* Floating Elements */
-        .floating-elements {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
+                 /* Scattered Phone Images */
+         .scattered-phone {
+             position: absolute;
+             z-index: 50;
+             transition: all 0.6s ease;
+             cursor: pointer;
+             filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.2));
+         }
+
+         .scattered-phone:hover {
+             transform: scale(1.05) rotate(0deg) !important;
+             z-index: 200;
+             filter: drop-shadow(0 25px 50px rgba(91, 107, 59, 0.3));
+         }
+
+         .scattered-phone:hover .phone-text {
+             opacity: 1;
+             transform: translateY(-10px);
+         }
+
+         .scattered-phone img {
+             width: 100%;
+             height: auto;
+             border-radius: 20px;
+         }
+
+         /* Floating Text Snippets */
+         .phone-text {
+             position: absolute;
+             background: rgba(249, 247, 241, 0.95);
+             backdrop-filter: blur(20px);
+             padding: 1rem 1.5rem;
+             border-radius: 16px;
+             font-size: 0.9rem;
+             line-height: 1.4;
+             color: var(--text-dark);
+             max-width: 280px;
+             opacity: 0;
+             transition: all 0.4s ease;
+             pointer-events: none;
+             box-shadow: 0 8px 25px rgba(91, 107, 59, 0.2);
+             z-index: 100;
+         }
+
+         .phone-text.left {
+             right: 120%;
+             top: 50%;
+             transform: translateY(-50%);
+         }
+
+         .phone-text.right {
+             left: 120%;
+             top: 50%;
+             transform: translateY(-50%);
+         }
+
+         .phone-text.top {
+             bottom: 120%;
+             left: 50%;
+             transform: translateX(-50%);
+         }
+
+         .phone-text.bottom {
+             top: 120%;
+             left: 50%;
+             transform: translateX(-50%);
+         }
+
+         /* Ensure text doesn't go off-screen */
+         @media (max-height: 800px) {
+             .phone-text.top {
+                 bottom: auto;
+                 top: 120%;
+             }
+         }
+
+        /* Individual phone positions - chaotic but balanced */
+        .phone-1 {
+            width: 180px;
+            top: 15%;
+            left: 8%;
+            transform: rotate(-15deg);
+            animation: float1 8s infinite ease-in-out;
         }
 
-        .floating-shape {
-            position: absolute;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--dammie-olive) 0%, var(--dammie-olive-dark) 100%);
-            opacity: 0.1;
-            animation: float 20s infinite ease-in-out;
+        .phone-2 {
+            width: 160px;
+            top: 25%;
+            right: 12%;
+            transform: rotate(12deg);
+            animation: float2 10s infinite ease-in-out;
         }
 
-        .floating-shape:nth-child(1) {
-            width: 100px;
-            height: 100px;
-            top: 20%;
-            left: 10%;
-            animation-delay: -5s;
-        }
-
-        .floating-shape:nth-child(2) {
-            width: 150px;
-            height: 150px;
-            top: 60%;
-            right: 15%;
-            animation-delay: -10s;
-        }
-
-        .floating-shape:nth-child(3) {
-            width: 80px;
-            height: 80px;
+        .phone-3 {
+            width: 200px;
             bottom: 20%;
-            left: 20%;
-            animation-delay: -15s;
+            left: 5%;
+            transform: rotate(8deg);
+            animation: float3 9s infinite ease-in-out;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            25% { transform: translateY(-20px) rotate(90deg); }
-            50% { transform: translateY(-10px) rotate(180deg); }
-            75% { transform: translateY(-30px) rotate(270deg); }
+        .phone-4 {
+            width: 170px;
+            bottom: 15%;
+            right: 8%;
+            transform: rotate(-20deg);
+            animation: float4 7s infinite ease-in-out;
         }
 
-        /* Final CTA Section */
-        .final-cta {
-            background: var(--dammie-olive-darker);
+        .phone-5 {
+            width: 150px;
+            top: 8%;
+            left: 30%;
+            transform: rotate(25deg);
+            animation: float5 11s infinite ease-in-out;
+        }
+
+        .phone-6 {
+            width: 190px;
+            top: 35%;
+            left: 15%;
+            transform: rotate(-8deg);
+            animation: float6 6s infinite ease-in-out;
+        }
+
+        .phone-7 {
+            width: 165px;
+            bottom: 35%;
+            right: 15%;
+            transform: rotate(18deg);
+            animation: float7 9s infinite ease-in-out;
+        }
+
+        .phone-8 {
+            width: 175px;
+            top: 12%;
+            right: 35%;
+            transform: rotate(-12deg);
+            animation: float8 8s infinite ease-in-out;
+        }
+
+        /* Floating animations for each phone */
+        @keyframes float1 {
+            0%, 100% { transform: rotate(-15deg) translateY(0px); }
+            50% { transform: rotate(-15deg) translateY(-15px); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: rotate(12deg) translateY(0px); }
+            50% { transform: rotate(12deg) translateY(-20px); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: rotate(8deg) translateY(0px); }
+            50% { transform: rotate(8deg) translateY(-18px); }
+        }
+
+        @keyframes float4 {
+            0%, 100% { transform: rotate(-20deg) translateY(0px); }
+            50% { transform: rotate(-20deg) translateY(-12px); }
+        }
+
+        @keyframes float5 {
+            0%, 100% { transform: rotate(25deg) translateY(0px); }
+            50% { transform: rotate(25deg) translateY(-22px); }
+        }
+
+        @keyframes float6 {
+            0%, 100% { transform: rotate(-8deg) translateY(0px); }
+            50% { transform: rotate(-8deg) translateY(-16px); }
+        }
+
+        @keyframes float7 {
+            0%, 100% { transform: rotate(18deg) translateY(0px); }
+            50% { transform: rotate(18deg) translateY(-14px); }
+        }
+
+        @keyframes float8 {
+            0%, 100% { transform: rotate(-12deg) translateY(0px); }
+            50% { transform: rotate(-12deg) translateY(-19px); }
+        }
+
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(249, 247, 241, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .music-player:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(91, 107, 59, 0.2);
+        }
+
+        .play-pause-btn {
+            background: var(--dammie-olive);
             color: white;
-            padding: 8rem 2rem;
-            text-align: center;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .final-cta h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 2rem;
-            color: var(--dammie-cream);
+        .play-pause-btn:hover {
+            background: var(--dammie-olive-dark);
+            transform: scale(1.1);
         }
 
-        .final-cta p {
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-            color: rgba(249, 247, 241, 0.9);
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .beta-note {
-            background: rgba(249, 247, 241, 0.1);
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin: 3rem auto;
-            max-width: 500px;
+        .song-info {
             font-size: 0.9rem;
-            color: rgba(249, 247, 241, 0.8);
+            color: var(--text-dark);
+            font-weight: 500;
         }
 
         /* Footer */
         .footer {
-            background: var(--text-dark);
+            position: relative;
+            background: var(--dammie-olive-darker);
             color: white;
-            padding: 3rem 2rem 2rem;
+            padding: 4rem 2rem 2rem;
             text-align: center;
+            z-index: 100;
+            margin-top: 100vh;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dammie-cream);
+        }
+
+        .footer p {
+            color: rgba(249, 247, 241, 0.8);
+            margin-bottom: 2rem;
+            line-height: 1.6;
         }
 
         .footer-links {
@@ -420,391 +439,259 @@
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(249, 247, 241, 0.8);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .footer-links a:hover {
-            color: white;
+            color: var(--dammie-cream);
         }
 
-        /* Responsive */
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .hero-content,
-            .story-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 2rem;
+            .central-content {
+                margin: 2rem;
+                padding: 2rem;
+                max-width: none;
+                left: 50%;
+                transform: translate(-50%, -50%);
             }
 
-            .story-content.reverse .story-text,
-            .story-content.reverse .phone-showcase {
-                order: unset;
+            .central-content h1 {
+                font-size: 2.5rem;
             }
 
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
+            .central-content .tagline {
+                font-size: 1.2rem;
             }
 
-            .phone-mockup {
-                width: 280px;
-                height: 580px;
-                transform: none;
+            .scattered-phone {
+                width: 120px !important;
             }
 
-            .footer-links {
-                flex-direction: column;
-                gap: 1rem;
+            .phone-1 { top: 10%; left: 5%; }
+            .phone-2 { top: 15%; right: 5%; }
+            .phone-3 { bottom: 25%; left: 3%; }
+            .phone-4 { bottom: 20%; right: 5%; }
+            .phone-5 { top: 5%; left: 25%; }
+            .phone-6 { top: 30%; left: 10%; }
+            .phone-7 { bottom: 30%; right: 10%; }
+            .phone-8 { top: 8%; right: 25%; }
+
+            .music-player {
+                bottom: 1rem;
+                right: 1rem;
+                padding: 0.8rem 1rem;
             }
-
-            .story-section {
-                padding: 2rem 1rem;
-            }
-        }
-
-        /* Scroll animations */
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Music Control */
-        .music-control {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 60px;
-            height: 60px;
-            background: var(--dammie-olive);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(91, 107, 59, 0.3);
-        }
-
-        .music-control:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 25px rgba(91, 107, 59, 0.4);
-        }
-
-        .music-control span {
-            color: white;
-            font-size: 1.5rem;
-        }
-
-        /* Song Title Display */
-        .song-title {
-            position: fixed;
-            bottom: 2rem;
-            right: 5rem;
-            background: rgba(91, 107, 59, 0.9);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(91, 107, 59, 0.3);
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateX(100%);
-            z-index: 999;
-            white-space: nowrap;
-        }
-
-        .song-title.visible {
-            opacity: 1;
-            transform: translateX(-20px);
         }
     </style>
 </head>
 <body>
+    <!-- Background Video -->
+    <video class="background-video" autoplay muted loop>
+        <source src="dammie.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+
     <!-- Header -->
     <header class="header">
         <nav class="nav">
-            <a href="/" class="logo">dammie</a>
-            <a href="https://instagram.com/dammie_app" class="instagram-link">@dammie_app</a>
+            <a href="#" class="logo">dammie</a>
+            <a href="https://instagram.com/dammie.app" class="instagram-link" target="_blank">@dammie.app</a>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="floating-elements">
-            <div class="floating-shape"></div>
-            <div class="floating-shape"></div>
-            <div class="floating-shape"></div>
-        </div>
-        <div class="hero-content">
-            <div class="hero-text fade-in-up">
-                <h1>dammie</h1>
-                <p class="tagline">your local pulse</p>
-                
-                <div class="cta-buttons">
-                    <a href="https://apps.apple.com/app/dammie" class="app-store-button" target="_blank">
-                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
-                    </a>
-                </div>
-                
-                <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 0.5rem; font-style: italic;">
-                    android? we don't fuck with that.
-                </p>
-                
-                <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 1rem;">
-                    currently in beta • amsterdammers only
-                </p>
-            </div>
-            
-            <div class="phone-showcase fade-in-up">
-                <div class="phone-mockup">
-                    <div class="phone-screen">
-                        <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 34px;">
-                            <source src="./dammie.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Main Chaos Container -->
+    <main class="chaos-container">
+                 <!-- Central Content -->
+         <div class="central-content">
+             <h1>dammie</h1>
+             <p class="tagline">your local pulse</p>
+             <p class="description">canals are whispering ancient secrets, the cobblestones are humming with untold stories, and somewhere in a forgotten brown café, a stranger is about to become your new favorite person.</p>
+             
+             <a href="https://apps.apple.com/app/dammie/id6502126064" class="app-store-button" target="_blank">
+                 <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+             </a>
+             
+             <p class="android-message">android? we don't fuck with that.</p>
+         </div>
 
-    <!-- Story Section 1: Dear Amsterdammers -->
-    <section class="story-section">
-        <div class="story-content">
-            <div class="story-text fade-in-up">
-                <h2>dear amsterdammers,</h2>
-                <p>the canals are whispering ancient secrets, the cobblestones are humming with untold stories, and somewhere in a forgotten brown café, a stranger is about to become your new favorite person.</p>
-                <p>the city is poised to explode with hidden magik – temporary aquariums of dreamers, dancers, and dawn-chasers who know that amsterdam's real soul ain't in no fucking guidebook.</p>
-            </div>
-            
-            <div class="phone-showcase fade-in-up">
-                <img src="./app_screens/home_11.png" alt="Discover Events" style="max-width: 320px; height: auto;">
-            </div>
-        </div>
-    </section>
+                 <!-- Scattered Phone Images -->
+         <div class="scattered-phone phone-1">
+             <img src="app_screens/home_1.png" alt="dammie home screen">
+             <div class="phone-text right">
+                 <strong>discover events</strong><br>
+                 the city is poised to explode with hidden magik – temporary aquariums of dreamers, dancers, and dawn-chasers who know that amsterdam's real soul ain't in no fucking guidebook.
+             </div>
+         </div>
+         
+         <div class="scattered-phone phone-2">
+             <img src="app_screens/eventdetail.png" alt="event details">
+             <div class="phone-text left">
+                 <strong>event details</strong><br>
+                 wine bars tucked behind hidden doors, electronic sets in warehouses that technically don't exist, and art galleries where the real art happens after midnight.
+             </div>
+         </div>
+         
+         <div class="scattered-phone phone-3">
+             <img src="app_screens/circle_1.png" alt="dammie circles">
+             <div class="phone-text right">
+                 <strong>for the initiated only</strong><br>
+                 we verify every human with a proper dutch phone number and amsterdam postcode because authentic experiences deserve an authentic crew.
+             </div>
+         </div>
+         
+         <div class="scattered-phone phone-4">
+             <img src="app_screens/home-dark.png" alt="dark mode home">
+             <div class="phone-text left">
+                 <strong>our vision (or whatever)</strong><br>
+                 from those golden age explorers who probably would've loved a good warehouse rave to today's creative pioneers turning abandoned buildings into temporary utopias.
+             </div>
+         </div>
+         
+         <div class="scattered-phone phone-5">
+             <img src="app_screens/home_11.png" alt="home screen variant">
+             <div class="phone-text bottom">
+                 <strong>what is this dammie business?</strong><br>
+                 dammie is your co-conspirator in the beautiful mess of discovering amsterdam's underground heartbeat.
+             </div>
+         </div>
+         
+         <div class="scattered-phone phone-6">
+             <img src="app_screens/home_2.png" alt="home screen events">
+             <div class="phone-text right">
+                 <strong>not another tourist trap</strong><br>
+                 this is for the bike-riding, canal-walking, stroopwafel-dismissing souls who understand that amsterdam's extraordinary moments happen in the spaces between the instagram posts.
+             </div>
+         </div>
+         
+         <div class="scattered-phone phone-7">
+             <img src="app_screens/circle_2.png" alt="circle features">
+             <div class="phone-text bottom">
+                 <strong>gezelligheid test</strong><br>
+                 if you can't pronounce "gezelligheid" without sounding like you're choking on a stroopwafel, this probably ain't your vibe.
+             </div>
+         </div>
+         
+         <div class="scattered-phone phone-8">
+             <img src="app_screens/profile_1.png" alt="user profile">
+             <div class="phone-text left">
+                 <strong>the magic happens here</strong><br>
+                 welcome to the other side of the city – the side that doesn't make it into tourist guides but lives in the hearts of those who truly call amsterdam home.
+             </div>
+         </div>
+    </main>
 
-    <!-- Story Section 2: What is Dammie -->
-    <section class="story-section">
-        <div class="story-content reverse">
-            <div class="story-text fade-in-up">
-                <h2>what is this dammie business?</h2>
-                <p>dammie is your co-conspirator in the beautiful mess of discovering amsterdam's underground heartbeat. we're talking about those wine bars tucked behind hidden doors, electronic sets in warehouses that technically don't exist, and art galleries where the real art happens after midnight.</p>
-                <p>this ain't another tourist trap masquerading as "local insights." this is for the bike-riding, canal-walking, stroopwafel-dismissing souls who understand that amsterdam's extraordinary moments happen in the spaces between the instagram posts.</p>
-            </div>
-            
-            <div class="phone-showcase fade-in-up">
-                <img src="./app_screens/home_2.png" alt="Event Details" style="max-width: 280px; height: auto; clip-path: inset(60px 40px 80px 40px); border-radius: 25px;">
-            </div>
-        </div>
-    </section>
+    <!-- Music Player -->
+    <div class="music-player">
+        <button class="play-pause-btn" id="playPauseBtn">
+            <span id="playIcon">▶</span>
+        </button>
+        <div class="song-info">Duke - So in Love With You</div>
+    </div>
 
-    <!-- Story Section 3: For the Initiated -->
-    <section class="story-section">
-        <div class="story-content">
-            <div class="story-text fade-in-up">
-                <div class="highlight">
-                    <p><strong>for the initiated only</strong></p>
-                    <p>we verify every human with a proper dutch phone number and amsterdam postcode because authentic experiences deserve an authentic crew. no weekend warriors. no "dutch for a semester" exchange students. no "i stayed in the jordaan once" energy.</p>
-                    <p>if you can't pronounce "gezelligheid" without sounding like you're choking on a stroopwafel, this probably ain't your vibe.</p>
-                </div>
-            </div>
-            
-            <div class="phone-showcase fade-in-up">
-                <img src="./app_screens/circle_2.png" alt="Circle Features" style="max-width: 320px; height: auto;">
-            </div>
-        </div>
-    </section>
-
-    <!-- Story Section 4: Our Vision -->
-    <section class="story-section">
-        <div class="story-content reverse">
-            <div class="story-text fade-in-up">
-                <h2>our vision (or whatever)</h2>
-                <p>amsterdam has always been a city of discovery – from those golden age explorers who probably would've loved a good warehouse rave to today's creative pioneers turning abandoned buildings into temporary utopias.</p>
-                <p>dammie continues that tradition, but instead of conquering new worlds, we're helping you uncover new dimensions of the world you already inhabit.</p>
-                <p>the best experiences aren't advertised on billboards or trending on tiktok. they're whispered between friends over late-night bike rides, shared in quiet moments when the city reveals its secrets.</p>
-            </div>
-            
-            <div class="phone-showcase fade-in-up" style="display: flex; gap: 2rem; justify-content: center; align-items: center;">
-                <img src="./app_screens/profile_1.png" alt="Profile Feature" style="max-width: 280px; height: auto;">
-                <img src="./app_screens/phone_light.png" alt="Light Theme" style="max-width: 280px; height: auto;">
-            </div>
-        </div>
-    </section>
-
-    <!-- Story Section 5: Additional Phone Screen -->
-    <section class="story-section">
-        <div class="story-content">
-            <div class="story-text fade-in-up">
-                <h2>the magic happens here</h2>
-                <p>every tap, every swipe, every saved event is a step deeper into amsterdam's underground heartbeat. this is where curiosity meets community, where late-night wanderers find their tribe.</p>
-                <p>welcome to the other side of the city – the side that doesn't make it into tourist guides but lives in the hearts of those who truly call amsterdam home.</p>
-            </div>
-            
-            <div class="phone-showcase fade-in-up">
-                <div class="phone-mockup">
-                                         <div class="phone-screen">
-                         <img src="./app_screens/phone_light.png" alt="App Experience" style="width: 100%; height: 100%; object-fit: cover; border-radius: 34px;">
-                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="final-cta">
-        <h2>remember kids,</h2>
-        <p>stay curious, explore your city, don't be a tourist in your own backyard.</p>
-        
-        <div class="cta-buttons">
-            <a href="https://apps.apple.com/app/dammie" class="app-store-button" target="_blank">
-                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
-            </a>
-        </div>
-        
-        <div class="beta-note">
-            beta access: currently by invitation and good vibes only<br>
-            questions: hello@dammie.app
-        </div>
-        
-        <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">
-            dammie launched in 2025 with a simple belief: amsterdam's most beautiful moments are worth discovering together, one authentic experience at a time.
-        </p>
-        
-        <p style="margin-top: 1rem; font-weight: 600; color: var(--dammie-cream); font-size: 1.1rem;">
-            dammie.<br>
-            your amsterdam, discovered.
-        </p>
-    </section>
+         <!-- Footer -->
+     <footer class="footer">
+         <div class="footer-content">
+             <h3>discover amsterdam's hidden pulse</h3>
+             <p>currently in beta • amsterdammers only</p>
+             
+             <div class="footer-links">
+                 <a href="mailto:hello@dammie.app">hello@dammie.app</a>
+                 <a href="dammie_privacy.pdf" target="_blank">privacy policy</a>
+                 <a href="https://instagram.com/dammie.app" target="_blank">@dammie.app</a>
+             </div>
+             
+             <p>&copy; 2025 dammie. your amsterdam, discovered.</p>
+         </div>
+     </footer>
 
     <!-- Background Music -->
-    <audio id="backgroundMusic" loop autoplay>
-        <source src="./Duke-So in Love With You.mp3" type="audio/mpeg">
+    <audio id="backgroundMusic" loop>
+        <source src="Duke-So in Love With You.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Song Title Display -->
-    <div class="song-title" id="songTitle">
-        duke - so in love with you
-    </div>
-
-    <!-- Music Control Button -->
-    <div class="music-control" onclick="toggleMusic()">
-        <span id="musicIcon">🎵</span>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-links">
-            <a href="mailto:hello@dammie.app">hello@dammie.app</a>
-            <a href="https://instagram.com/dammie_app">@dammie_app</a>
-            <a href="./dammie_privacy.pdf" target="_blank">privacy policy</a>
-        </div>
-        <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.9rem; margin-top: 1rem;">
-            built by amsterdammers, for amsterdammers • launched 2025
-        </p>
-    </footer>
+    <!-- Apple App Site Association -->
+    <script type="application/json" id="apple-app-site-association">
+    {
+      "applinks": {
+        "details": [
+          {
+            "appIDs": [
+              "42N3Q8BQJJ.com.dammie.app"
+            ],
+            "components": [
+              {
+                "/": "/event/*",
+                "comment": "Matches any event URL like /event/wine-night-at-glou-glou"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    </script>
 
     <script>
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // Music Player Functionality
+        const audio = document.getElementById('backgroundMusic');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const playIcon = document.getElementById('playIcon');
+        let isPlaying = false;
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+        // Auto-play attempt (may be blocked by browser)
+        audio.play().then(() => {
+            isPlaying = true;
+            playIcon.textContent = '⏸';
+        }).catch(() => {
+            // Auto-play blocked, user needs to click
+            isPlaying = false;
+            playIcon.textContent = '▶';
+        });
 
-        // Observe all fade-in-up elements
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.fade-in-up').forEach(el => {
-                observer.observe(el);
+        playPauseBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                playIcon.textContent = '▶';
+                isPlaying = false;
+            } else {
+                audio.play();
+                playIcon.textContent = '⏸';
+                isPlaying = true;
+            }
+        });
+
+        // Add subtle parallax effect to scattered phones
+        document.addEventListener('mousemove', (e) => {
+            const phones = document.querySelectorAll('.scattered-phone');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+
+            phones.forEach((phone, index) => {
+                const speed = (index + 1) * 0.5;
+                const x = (mouseX - 0.5) * speed;
+                const y = (mouseY - 0.5) * speed;
+                
+                phone.style.transform += ` translate(${x}px, ${y}px)`;
             });
         });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-                 // Phone tilt effect based on scroll
-         window.addEventListener('scroll', () => {
-             const phones = document.querySelectorAll('.phone-mockup');
-             phones.forEach(phone => {
-                 const rect = phone.getBoundingClientRect();
-                 const centerY = window.innerHeight / 2;
-                 const phoneCenter = rect.top + rect.height / 2;
-                 const distance = Math.abs(phoneCenter - centerY);
-                 const maxDistance = window.innerHeight / 2;
-                 const tiltAmount = Math.max(0, (maxDistance - distance) / maxDistance) * 10;
-                 
-                 if (rect.top < window.innerHeight && rect.bottom > 0) {
-                     phone.style.transform = `rotateY(-${tiltAmount}deg) rotateX(5deg)`;
-                 }
-             });
-         });
-
-         // Music control
-         let musicPlaying = false;
-         const music = document.getElementById('backgroundMusic');
-         const musicIcon = document.getElementById('musicIcon');
-         const songTitle = document.getElementById('songTitle');
-
-         function toggleMusic() {
-             if (musicPlaying) {
-                 music.pause();
-                 musicIcon.textContent = '🎵';
-                 songTitle.classList.remove('visible');
-                 musicPlaying = false;
-             } else {
-                 music.play().catch(e => console.log('Audio play failed:', e));
-                 musicIcon.textContent = '🔇';
-                 songTitle.classList.add('visible');
-                 musicPlaying = true;
-             }
-         }
-
-         // Auto-start music when page loads
-         window.addEventListener('load', () => {
-             music.volume = 0.3; // Set to 30% volume
-             music.play().then(() => {
-                 musicPlaying = true;
-                 musicIcon.textContent = '🔇';
-                 songTitle.classList.add('visible');
-             }).catch(e => {
-                 console.log('Autoplay blocked, waiting for user interaction');
-                 // Fallback: enable on first click if autoplay is blocked
-                 document.addEventListener('click', function enableMusic() {
-                     if (!musicPlaying) {
-                         toggleMusic();
-                     }
-                     document.removeEventListener('click', enableMusic);
-                 }, { once: true });
-             });
-         });
+        // Universal Links handling
+        if (window.location.pathname.startsWith('/event/')) {
+            const eventSlug = window.location.pathname.split('/event/')[1];
+            if (eventSlug) {
+                // Try to open the app
+                const appURL = `dammie://event/${eventSlug}`;
+                window.location.href = appURL;
+                
+                // Fallback after 2 seconds
+                setTimeout(() => {
+                    // Show event info or redirect to app store
+                    console.log('App not installed, showing web fallback');
+                }, 2000);
+            }
+        }
     </script>
 </body>
 </html> 
