@@ -594,9 +594,9 @@
                 animation: none; /* Disable floating on mobile */
             }
 
-            /* Mobile: Scattered phones - smaller and repositioned */
+            /* Mobile: Scattered phones - keep reasonable size and repositioned */
             .scattered-phone {
-                width: 80px !important;
+                width: 120px !important;
                 animation: none !important; /* Disable floating animations on mobile */
             }
 
@@ -642,9 +642,21 @@
                 transform: rotate(-12deg) !important;
             }
 
-            /* Mobile: Hide hover text on scattered phones */
-            .scattered-phone:hover .phone-text {
-                opacity: 0;
+            /* Mobile: Make text always visible on tap/touch */
+            .scattered-phone .phone-text {
+                opacity: 0.9;
+                transform: translateY(-10px);
+                position: relative;
+                margin-top: 1rem;
+                position: absolute;
+                background: rgba(249, 247, 241, 0.98);
+                backdrop-filter: blur(25px);
+                border: 1px solid rgba(91, 107, 59, 0.2);
+            }
+
+            .scattered-phone:active .phone-text {
+                opacity: 1;
+                transform: translateY(-15px);
             }
 
             /* Mobile: Music player adjustments */
@@ -747,7 +759,7 @@
             }
 
             .scattered-phone {
-                width: 60px !important;
+                width: 100px !important;
             }
 
             .footer-content {
